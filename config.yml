@@ -1,0 +1,7 @@
+http:
+  port: 80
+ssh:
+  port: 22
+  keys:
+    username:
+      - type key comment

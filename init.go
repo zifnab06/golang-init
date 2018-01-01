@@ -3,7 +3,6 @@ package main
 import (
         "log"
         "net"
-        "net/http"
         "os"
         "github.com/vishvananda/netlink"
 )
@@ -67,16 +66,13 @@ func setupInterfaces() {
     }
 }
 
-func EchoHandler(writer http.ResponseWriter, request *http.Request) {
-    log.Println(request.RemoteAddr + " requested " + request.URL.Path)
-    request.Write(writer)
-}
-
 func main() {
     log.SetOutput(os.Stderr)
     log.Println("Starting golang-init...")
-    setupInterfaces()
-    log.Println("Starting http echo server...")
-    http.HandleFunc("/", EchoHandler)
-    http.ListenAndServe(":80", nil)
+    config := LoadConfig()
+    //setupInterfaces()
+    log.Printf("Starting http echo server on port %v...", config.Http.Port)
+    go http_server(config)
+    go ssh_server(config)
+    for {}
 }

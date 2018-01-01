@@ -11,4 +11,4 @@ clean:
 
 init:
 	CGO_ENABLED=0
-	go build -a -installsuffix cgo -ldflags '-s' init.go config.go http.go ssh.go
+	go build -a -installsuffix cgo -ldflags '-s' init.go config.go http.go ssh.go network.go

@@ -1,3 +1,7 @@
+net:
+  eth0:
+    address: foobar
+    gateway: foobar
 http:
   port: 80
 ssh:

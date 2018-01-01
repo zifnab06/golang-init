@@ -6,6 +6,11 @@ import (
         "gopkg.in/yaml.v2"
 )
 
+type iface struct {
+    Name string
+    Address string
+    Gateway string
+}
 type Config struct {
     Http struct {
         Port int
@@ -14,6 +19,7 @@ type Config struct {
         Port int
         Keys map[string][]string
     }
+    Network []iface
 }
 
 func LoadConfig() Config {
@@ -25,5 +31,6 @@ func LoadConfig() Config {
     if err := yaml.Unmarshal(yamlFile, &config); err != nil {
         log.Fatal(err)
     }
+    log.Printf("%+v", config)
     return config
 }

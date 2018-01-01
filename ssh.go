@@ -41,6 +41,6 @@ func ssh_server(config Config) {
         return false
     })
 
-    log.Println(fmt.Sprintf("starting ssh server on port %v", config.Ssh.Port))
+    log.Println(fmt.Sprintf("Starting ssh server on port %v", config.Ssh.Port))
     log.Fatal(ssh.ListenAndServe(fmt.Sprintf(":%v", config.Ssh.Port), nil, publicKeyOption))
 }

@@ -13,6 +13,7 @@ func EchoHandler(writer http.ResponseWriter, request *http.Request) {
 
 func http_server(config Config) {
     http.HandleFunc("/", EchoHandler)
+    log.Println("Starting http echo server on port ", config.Http.Port)
     log.Fatal(http.ListenAndServe(fmt.Sprintf(":%v", config.Http.Port), nil))
 }
 

@@ -3,16 +3,17 @@ package main
 import (
         "log"
         "os"
+        "time"
 )
 
 func main() {
     log.SetOutput(os.Stderr)
     log.Println("Starting golang-init...")
     config := LoadConfig()
-    // if length of network hosts is more than 0
     setupInterfaces(config)
-    // endif
-    log.Printf("Starting http echo server on port %v...", config.Http.Port)
+    log.Println("Sleep 5")
+    time.Sleep(5)
+    log.Println("End sleep")
     go http_server(config)
     go ssh_server(config)
     for {}

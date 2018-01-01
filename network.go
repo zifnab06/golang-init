@@ -53,13 +53,11 @@ func setupInterfaces(config Config) {
                 printInterfaces()
                 if len(iface.Gateway) > 0 {
                     log.Println("Adding default route to ", iface.Name, "...")
-                    printRoutes()
                     gw := net.ParseIP(iface.Gateway)
                     route := netlink.Route{LinkIndex: link.Attrs().Index, Gw: gw}
                     if err:= netlink.RouteAdd(&route); err != nil {
                         log.Println("Error: unable to add route", err)
                     }
-                    printRoutes()
                 }
             } else {
                 log.Fatal("Error: unable to parse address")

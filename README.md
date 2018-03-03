@@ -3,7 +3,7 @@ golang-init
 
 golang microservice as init.
 
-This project runs at http://golang-init.zifnab.net. Basic rundown:
+This project previously ran at http://golang-init.zifnab.net. Basic rundown:
 
 1) Configure eth0
 2) Add default route
